@@ -16,6 +16,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--video", required=True, help="Path to video file")
+    parser.add_argument("--blur", action="store_true", help="Blur detections")
     args = parser.parse_args()
 
     log_queue = Queue()
@@ -39,7 +40,7 @@ def main():
 
     detector = Process(target=detector_process, args=(frames_q, results_q, stop_event, log_queue), name="Detector")
 
-    presenter = Process(target=presenter_process, args=(results_q, stop_event, log_queue), name="Presenter")
+    presenter = Process(target=presenter_process, args=(results_q, stop_event, log_queue, args.blur), name="Presenter")
 
     streamer.start()
     detector.start()
