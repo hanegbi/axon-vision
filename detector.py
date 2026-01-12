@@ -39,6 +39,7 @@ class Detector:
                     break
 
                 if self.stop_event.is_set():
+                    self.results_q.put(None)
                     break
 
                 gray_frame = cv2.cvtColor(frame_msg.frame, cv2.COLOR_BGR2GRAY)
