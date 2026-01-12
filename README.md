@@ -23,6 +23,13 @@ python main.py --video path/to/video.mp4
 python main.py --video path/to/video.mp4 --blur
 ```
 
+## Packages
+
+- **opencv-python**: Video capture, frame processing, and display
+- **pydantic**: Message validation and serialization
+- **numpy**: Array operations for frame data
+- **black**: Code formatting (development)
+
 ## Examples
 
 Example output on common surveillance camera data showing people walking.
